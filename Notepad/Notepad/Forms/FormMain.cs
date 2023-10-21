@@ -13,9 +13,13 @@ namespace Notepad.Forms
 {
     public partial class FormMain : Form
     {
+        bool CheckChanges()
+        {
+            return true;
+        }
+        #region Values
         string OurFileName;
-
-
+        #endregion Values
 
         #region Find
         private void findNextToolStripMenuItem_Click(object sender, EventArgs e)
@@ -34,8 +38,10 @@ namespace Notepad.Forms
             find.Show(this);
         }
 
-        
+
         #endregion
+
+        #region Save
         void DoSave(string filename)
         {
             OurFileName = filename;
@@ -50,6 +56,9 @@ namespace Notepad.Forms
                 DoSave(saveFileDialog.FileName);
             }
         }
+        #endregion
+
+        #region Edit
         public FormMain()
         {
             InitializeComponent();
@@ -79,13 +88,10 @@ namespace Notepad.Forms
         {
             richTxt.Clear();
         }
+        #endregion Edit
 
-
-        bool CheckChanges()
-        {
-          return true;
-        }
-         private void openToolStripMenuItem_Click(object sender, EventArgs e)
+        #region Menu Strip
+        private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
             if (CheckChanges())
@@ -125,5 +131,6 @@ namespace Notepad.Forms
             folderDial.ShowDialog();
             MessageBox.Show(folderDial.SelectedPath);
         }
+        #endregion Menu Strip
     }
 }
